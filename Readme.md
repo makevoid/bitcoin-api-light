@@ -1,6 +1,7 @@
 # bitcoin-api-light
 
-bitcoin-api-light is a bitcoin light-client nodejs module using Blockchain.info and Blockcyphers API to do three simple calls a minimal bitcoin wallet application needs to work
+
+bitcoin-api-light is a bitcoin bitcoin light-client API using Blockchain.info and Blockcypher API to do three simple calls a minimal bitcoin wallet application needs to do
 
 - get balance
 - get UTXOs
