@@ -54,6 +54,8 @@ var getUTXOs = function getUTXOs(address) {
     if (LOG) c.log("UTXOs for address '" + address + "':\n", utxos);
     return Promise.resolve(utxos);
   }).catch(function (resp) {
+    if (resp.data === "No free outputs to spend") return Promise.resolve([]);
+
     var error = resp.data.error;
     c.error("Bitcoin-API-light - Error during getUTXOs, response from Blockcypher API:", error);
     return Promise.reject(error);
