@@ -30,6 +30,8 @@ var getBalance = function getBalance(address) {
     if (LOG) c.log("Balance of '" + address + "' at 0 confirmations:", balance);
     return Promise.resolve(balance);
   }).catch(function (resp) {
+    if (resp === undefined) return Promise.resolve(0);
+
     var error = resp.data.error;
     c.error("Bitcoin-API-light - Error during getBalance, response from Blockchain.info API:", error);
     return Promise.reject(error);
