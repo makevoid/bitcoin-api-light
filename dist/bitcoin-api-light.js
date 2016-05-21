@@ -10,11 +10,11 @@ var enableLogging = function enableLogging() {
 };
 
 var balanceUrl = function balanceUrl(address, confirmations) {
-  return "https://blockchain.info/q/addressbalance/" + address + "?confirmations=" + confirmations + "&cors=1";
+  return "https://blockchain.info/q/addressbalance/" + address + "?confirmations=" + confirmations + "&cors=true";
 };
 
 var unspentUrl = function unspentUrl(address) {
-  return "https://blockchain.info/unspent?active=" + address + "&cors=1";
+  return "https://blockchain.info/unspent?active=" + address + "&cors=true";
 };
 
 var pushTXUrl = "https://api.blockcypher.com/v1/btc/main/txs/push";
