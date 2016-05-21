@@ -10,7 +10,7 @@ var enableLogging = function enableLogging() {
 };
 
 var balanceUrl = function balanceUrl(address, confirmations) {
-  return "http://blockchain.info/q/addressbalance/" + address + "?confirmations=" + confirmations + "&cors=1";
+  return "https://blockchain.info/q/addressbalance/" + address + "?confirmations=" + confirmations + "&cors=1";
 };
 
 var unspentUrl = function unspentUrl(address) {
