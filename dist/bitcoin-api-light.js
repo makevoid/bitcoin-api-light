@@ -43,12 +43,12 @@ var getUTXOs = function getUTXOs(address) {
   return axios.get(url).then(function (resp) {
     var utxos = [];
     var outputs = resp.data.unspent_outputs;
-    outputs.forEach(function (output) {
+    outputs.forEach(function (output, idx) {
       utxos.push({
-        tx_hash: output.tx_hash_big_endian,
-        output_n: output.tx_output_n,
-        script: output.script,
-        value: output.value
+        txId: output.tx_hash_big_endian,
+        vout: idx,
+        scriptPubKey: output.script,
+        satoshis: output.value
       });
     });
     if (LOG) c.log("UTXOs for address '" + address + "':\n", utxos);
