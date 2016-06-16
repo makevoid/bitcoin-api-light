@@ -43,12 +43,13 @@ var getUTXOs = function getUTXOs(address) {
   return axios.get(url).then(function (resp) {
     var utxos = [];
     var outputs = resp.data.unspent_outputs;
-    outputs.forEach(function (output, idx) {
+    outputs.forEach(function (output) {
       utxos.push({
         txId: output.tx_hash_big_endian,
-        vout: idx,
+        vout: output.tx_output_n,
         scriptPubKey: output.script,
-        satoshis: output.value
+        satoshis: output.value,
+        address: address
       });
     });
     if (LOG) c.log("UTXOs for address '" + address + "':\n", utxos);
@@ -64,9 +65,7 @@ var getUTXOs = function getUTXOs(address) {
 
 var pushTX = function pushTX(rawTX) {
   var tx = { tx: rawTX };
-  return axios.post(pushTXUrl, {
-    data: tx
-  }).then(function (resp) {
+  return axios.post(pushTXUrl, tx).then(function (resp) {
     var txHash = resp.data.tx.hash;
     c.log("Transaction sent!\nTx hash:", txHash, "\nSee the transaction on Blockcypher's block explorer: https://live.blockcypher.com/btc/tx/" + txHash);
     return Promise.resolve(txHash);

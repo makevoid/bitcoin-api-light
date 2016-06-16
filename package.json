@@ -1,6 +1,6 @@
 {
   "name": "bitcoin-api-light",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "bitcoin-api-light is a bitcoin light-client nodejs module using Blockchain.info and Blockcyphers API to do three simple calls a minimal bitcoin wallet application needs to work",
   "main": "dist/bitcoin-api-light.js",
   "scripts": {
